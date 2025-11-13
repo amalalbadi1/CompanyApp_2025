@@ -22,7 +22,7 @@ export class App implements OnInit{
 
 async getMembers(){
   try {
-  return  lastValueFrom( this.http.get<any[]>('http://localhost:5251/api/members'));
+  return  lastValueFrom( this.http.get<any[]>('https://localhost:5251/api/members'));
 
 }
   catch (error) {
