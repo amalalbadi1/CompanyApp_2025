@@ -15,14 +15,15 @@
     
 </a>
 </div>
-<nav class="flex gap-3 my-2 uppercase text-lg text-white">
-@if(accountService.currentUser())  {
-    <a routerLink="/members" routerLinkActive="text-accent" >Matches</a>
-    <a routerLink="/lists"  routerLinkActive="text-accent">list</a>
-    <a routerLink="/messages"  routerLinkActive="text-accent">Messages</a>
+            <nav class="flex gap-3 my-2 uppercase text-lg text-white">
+            @if(accountService.currentUser())  {
+                <a routerLink="/members" routerLinkActive="text-accent" >Matches</a>
+                <a routerLink="/lists"  routerLinkActive="text-accent">list</a>
+                <a routerLink="/messages"  routerLinkActive="text-accent">Messages</a>
+            }
 
-}
-  </nav>
+             <a routerLink="/errors"  routerLinkActive="text-accent">Error</a>
+            </nav>
 <div class="flax align-middle ml-auto gap-3">
    @if(accountService.currentUser();as user)  {
    <div class="dropdown drawer-end">
