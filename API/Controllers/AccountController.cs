@@ -12,16 +12,11 @@ namespace API.Controllers;
 
 public class AccountController(AppDbContext context ,ITokenService tokenService):BaseApiContoller
 {
-[HttpPost("register")] //localhost:5001/api/account/register
+[HttpPost("register")] //localhost:5251/api/account/register
 public async Task<ActionResult<UserDto>> Register(RegisterDtos registerDtos)
  {
     if (await EmailExists(registerDtos.Email)) return BadRequest("Email is taken");
 
-//     var user = await CreateUser(registerDtos.DispName, registerDtos.Email, registerDtos.Password);
-
-//     return user;
-// }
-// {
    var hmac =new HMACSHA512();
 
    var user = new AppUser

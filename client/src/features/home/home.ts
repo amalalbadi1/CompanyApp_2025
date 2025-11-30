@@ -9,7 +9,7 @@ import { User } from '../../type/user';
   styleUrl: './home.css',
 })
 export class Home {
-  //@Input({required:true}) membersFromApp:User[]=[];
+
 protected registerMode=signal (false);
 
 showRegister(value:boolean){

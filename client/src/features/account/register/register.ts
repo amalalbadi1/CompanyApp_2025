@@ -12,7 +12,7 @@ import { AccountService } from '../../../core/service/account-service';
 })
 export class Register {
   private accountService=inject(AccountService);
-  // membersFromHome=input.required<User[]>();
+  
   cancelRegister = output<boolean>();
   protected creds={} as RegisterCreds;
 

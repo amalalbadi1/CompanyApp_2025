@@ -14,6 +14,7 @@ public string CreateToken(AppUser user)
        var tokenKey=config["TokenKey"]??throw new Exception("Cannot get Token Key"  );
        if(tokenKey.Length<64)
             throw new Exception("your Token Key need to be at least 64 characters long");
+         
          var key=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey));
         
         var claim=new List<Claim>
@@ -21,6 +22,8 @@ public string CreateToken(AppUser user)
             new Claim(ClaimTypes.Email,user.Email),
             new Claim(ClaimTypes.NameIdentifier,user.Id)
         };
+
+
         var creds=new SigningCredentials(key,SecurityAlgorithms.HmacSha512Signature);
         var tokenDescriptor=new SecurityTokenDescriptor
         {
