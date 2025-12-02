@@ -14,6 +14,7 @@ public static UserDto ToDto(this AppUser user, ITokenService tokenService)
         Id = user.Id,
         DispName = user.DispName,
         Email = user.Email,
+        ImageUrl = user.ImageUrl,
         Token = tokenService.CreateToken(user)  
     };  
 }}
