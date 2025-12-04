@@ -2,12 +2,11 @@ import { Component ,inject, signal} from '@angular/core';
 import { MemberService } from '../../../core/service/member-service';
 import { ActivatedRoute, NavigationEnd, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { filter, Observable } from 'rxjs';
-import { Member } from '../../../type/member';
-import { AsyncPipe } from '@angular/common';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AgePipe } from '../../../core/pipes/age-pipe';
-
+import { AccountService } from '../../../core/service/account-service';
+import { computed } from '@angular/core';
 @Component({
   selector: 'app-member-details',
   imports: [ RouterLink,RouterLinkActive,RouterOutlet,AgePipe],
@@ -17,16 +16,17 @@ import { AgePipe } from '../../../core/pipes/age-pipe';
 export class MemberDetails implements OnInit {
 
 private route=inject(ActivatedRoute);
+private accountService=inject(AccountService);
+protected memberService=inject(MemberService);
 private router=inject(Router);
-protected member=signal<Member |undefined>(undefined);
+
 protected title =signal<string|undefined>('profile');
+protected isCurrentUser=computed(()=>{
+  return this.accountService.currentUser()?.id === this.route.snapshot.paramMap.get('id');
+})
 
 ngOnInit(): void {
-  this.route.data.subscribe({
-    next:(data)=>{
-      this.member.set(data['member']);
-    }
-  });
+
 this.title.set(this.route.firstChild?.snapshot?.title);
 
 

@@ -38,7 +38,8 @@ login(creds:LoginCreds){
 
 setCurrentUser(user:User){
    localStorage.setItem('user', JSON.stringify(user));
-         this.currentUser.set(user);}
+         this.currentUser.set(user);
+        }
 
 Logout(){
   localStorage.removeItem('user');

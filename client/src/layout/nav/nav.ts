@@ -6,6 +6,7 @@ import { AccountService } from '../../core/service/account-service';
 import { RouterLink, RouterLinkActive ,Router} from "@angular/router";
 import { ToastService } from '../../core/service/toast-service';
 import { themes } from '../nav/theme';
+import { BusyService } from '../../core/service/busy-service';
 @Component({
   selector: 'app-nav',
   imports: [FormsModule, RouterLink,RouterLinkActive],
@@ -14,6 +15,7 @@ import { themes } from '../nav/theme';
 })
 export class Nav implements OnInit{
   protected accountService=inject(AccountService);
+protected busyService=inject(BusyService);
 private router =inject(Router);
 private toast =inject(  ToastService);
 protected creds:any={};
